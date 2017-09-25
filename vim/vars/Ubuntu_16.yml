@@ -1,0 +1,4 @@
+---
+vim_package_name: vim-nox-py2
+vim_alternative: /usr/bin/vim.nox-py2
+vim_python: python

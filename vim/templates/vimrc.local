@@ -1,0 +1,35 @@
+" {{ ansible_managed }}
+"Pathogen load
+filetype off 
+
+call pathogen#infect()
+call pathogen#helptags()
+
+filetype plugin indent on
+syntax on
+
+let g:pymode_options_max_line_length = 180 
+
+{{ vim_python }} from powerline.vim import setup as powerline_setup
+{{ vim_python }} powerline_setup()
+{{ vim_python }} del powerline_setup
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+set laststatus=2
+set grepprg=grep\ -nrI\ --exclude-dir=tmp\ $*\ /dev/null
+set nu
+set t_Co=256
+set background=dark
+" colorscheme solarized
+colorscheme default
+
+map <C-n> <plug>NERDTreeTabsToggle<CR>
+nnoremap <C-left> :tabprev<CR>
+nnoremap <C-right> :tabnext<CR>
+
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-l> :wincmd l<CR>
+
+call togglebg#map("<F5>")

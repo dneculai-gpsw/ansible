@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: true
+  roles:
+        - { role: vim, tags: ['vim'] }
+        - { role: mc, tags: ['mc'] }
+        # - { role: ntp, tags: ['ntp'] }
+        # - { role: tmux, tags: ['tmux'] }
+        # - { role: timezone, tags: ['timezone'] }
+        # - { role: locales, tags: ['locales'] }
+        # - { role: mail_aliases, tags: ['mail_aliases'] }
+        # - { role: postfix, tags: ['postfix'] }
+        # - { role: snmpd, tags: ['snmpd'] }
+        # - { role: users, tags: ['users'] }
+        # - { role: bacula-client, tags: ['bacula-client'] }
+
+# - include: dns.yml
+# - include: mysqlservers.yml
+# - include: webservers.yml
+# - include: icinga2slave.yml
+# - include: pure-ftpd.yml

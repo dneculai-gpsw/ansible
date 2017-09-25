@@ -1,0 +1,68 @@
+---
+# tasks file for roles/vim
+- include_vars: "{{ ansible_distribution}}_{{ ansible_distribution_major_version}}.yml"
+  when: ansible_distribution == 'Debian' and ansible_distribution_major_version|int >= 8
+
+- include_vars: "{{ ansible_distribution}}_{{ ansible_distribution_major_version}}.yml"
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_major_version|int >= 16
+
+- block:
+        - name: Install vim
+          apt:
+                  name: "{{ item }}"
+                  state: present
+          with_items:
+                  - "{{ vim_package_name }}"
+                  - vim-pathogen
+                  - powerline
+
+        - name: Set alternatives for vim
+          alternatives:
+                  name: vim
+                  path: "{{ vim_alternative }}"
+
+        - name: Install python-mode
+          git:
+                  repo: https://github.com/klen/python-mode.git
+                  dest: /etc/vim/bundle/python-mode
+
+        - name: Install vim.nerdtree
+          git:
+                  repo: https://github.com/scrooloose/nerdtree.git
+                  dest: /etc/vim/bundle/nerdtree
+
+        - name: Install vim.nerdtree-tabs
+          git:
+                  repo: https://github.com/jistr/vim-nerdtree-tabs.git
+                  dest: /etc/vim/bundle/vim-nerdtree-tabs
+
+        - name: Install vim.ctrlp
+          git:
+                  repo: https://github.com/ctrlpvim/ctrlp.vim.git
+                  dest: /etc/vim/bundle/ctrlp.vim
+
+        - name: Install vim.tcomment
+          git:
+                  repo: https://github.com/tomtom/tcomment_vim.git
+                  dest: /etc/vim/bundle/tcomment
+
+        - name: Install vim.solarized.scheme
+          git:
+                  repo: https://github.com/altercation/vim-colors-solarized.git
+                  dest: /etc/vim/bundle/vim-colors-solarized
+
+        - name: Install vim.rgrep
+          git:
+                  repo: https://github.com/rosenfeld/rgrep.vim.git
+                  dest: /etc/vim/bundle/rgrep
+
+        - name: Configure vim.sls.syntax
+          git:
+                  repo: https://github.com/saltstack/salt-vim.git
+                  dest: /etc/vim/bundle/salt-vim
+
+        - name: Copy vimrc.local file
+          template:
+                  src: vimrc.local
+                  dest: /etc/vim/vimrc.local
+  when: vim_package_name is defined
