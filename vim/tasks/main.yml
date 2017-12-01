@@ -61,6 +61,11 @@
                   repo: https://github.com/saltstack/salt-vim.git
                   dest: /etc/vim/bundle/salt-vim
 
+        - name: Configure vim.terraform
+          git:
+                  repo: https://github.com/hashivim/vim-terraform.git
+                  dest: /etc/vim/bundle/vim-terraform
+
         - name: Copy vimrc.local file
           template:
                   src: vimrc.local
