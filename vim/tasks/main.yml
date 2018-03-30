@@ -71,6 +71,11 @@
                   repo: https://github.com/avakhov/vim-yaml
                   dest: /etc/vim/bundle/vim-yaml
 
+        - name: Configure vim-fugitive
+          git:
+                  repo: https://github.com/tpope/vim-fugitive.git
+                  dest: /etc/vim/bundle/vim-fugitive
+
         - name: Copy vimrc.local file
           template:
                   src: vimrc.local
