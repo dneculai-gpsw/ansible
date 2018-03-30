@@ -66,6 +66,11 @@
                   repo: https://github.com/hashivim/vim-terraform.git
                   dest: /etc/vim/bundle/vim-terraform
 
+        - name: Configure vim-yaml
+          git:
+                  repo: https://github.com/avakhov/vim-yaml
+                  dest: /etc/vim/bundle/vim-yaml
+
         - name: Copy vimrc.local file
           template:
                   src: vimrc.local
