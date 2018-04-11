@@ -9,8 +9,6 @@ filetype plugin indent on
 syntax on
 
 let g:pymode_options_max_line_length = 180 
-" disable mccabe <code is too complex> warning
-let g:pymode_lint_ignore = "C901"
 
 {{ vim_python }} from powerline.vim import setup as powerline_setup
 {{ vim_python }} powerline_setup()
